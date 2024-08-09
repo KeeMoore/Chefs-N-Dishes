@@ -1,0 +1,54 @@
+@model Dish;
+
+<div class="text-center">
+    <p> <a href="/chefs">Chefs</a> | <a href="/dishes">Dishes</a> | <a href="/chefs/new">Add a Chef</a> | <a
+            href="/dishes/new">Add a Dish</a></p>
+    <h1 class="display-4">Add a dish!</h1>
+</div>
+
+<form asp-action="CreateDish" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" placeholder="Name of Dish" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Calories"></label>
+        <select asp-for="Calories" class="form-control">
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+            <option value="500">500</option>
+        </select>
+        <span class="form-text text-warning" asp-validation-for="Calories"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ChefId"></label>
+        <select asp-for="ChefId" class="form-control">
+            <option value="" selected hidden disabled>Please select Chef</option>
+            @foreach (var chef in ViewBag.Chefs)
+            {
+                <option value="@chef.ChefId">@chef.Name</option>
+            }
+
+        </select>
+        <span asp-validation-for="ChefId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Tastiness"></label>
+        <select asp-for="Tastiness" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <span asp-validation-for="Tastiness" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add a Dish</button>
+    </div>
+</form>

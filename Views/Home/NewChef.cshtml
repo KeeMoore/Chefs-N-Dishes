@@ -1,0 +1,28 @@
+@model Chefs_N_Dishes.Models.Chef
+
+<div class="text-center">
+    <p> <a href="/chefs">Chefs</a> | <a href="/dishes">Dishes</a> | <a href="/chefs/new">Add a Chef</a> | <a
+            href="/dishes/new">Add a Dish</a></p>
+    <h1 class="display-4">Add a Chef!</h1>
+</div>
+
+<form asp-action="CreateChef" method="post">
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateOfBirth"></label>
+        <input asp-for="DateOfBirth" class="form-control" />
+        <span asp-validation-for="DateOfBirth" class action="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add Chef</button>
+    </div>
+</form>
